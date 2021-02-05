@@ -1,0 +1,9 @@
+[package]
+name = "midi_mapper"
+version = "0.1.0"
+authors = ["Asparuh Kamenov <asparuhkamenov@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+eframe = "0.8.0"
+wmidi = "4.0.2"
