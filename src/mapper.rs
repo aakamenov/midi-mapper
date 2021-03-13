@@ -1,14 +1,23 @@
 use std::hash::{Hash, Hasher};
+use slotmap::{SlotMap, new_key_type};
 
-#[derive(Clone, Copy, Eq, PartialEq)]
+pub type OutputNotes = SlotMap<OutputNoteKey, OutputNote>;
+
+#[derive(Clone, Copy, PartialEq)]
 pub struct InputNote {
     pub note: wmidi::Note,
     ///`None` if note stays the same
-    maps_to: Option<OutputNote>
+    pub maps_to: Option<OutputNoteKey>
 }
 
-#[derive(Clone, Copy, Hash, Eq, PartialEq)]
-pub struct OutputNote(wmidi::Note);
+#[derive(Clone, Copy, Hash, PartialEq)]
+pub struct OutputNote {
+    pub note: wmidi::Note
+}
+
+new_key_type! {
+    pub struct OutputNoteKey;
+}
 
 impl InputNote {
     pub fn new(note: wmidi::Note) -> Self {
@@ -22,5 +31,13 @@ impl InputNote {
 impl Hash for InputNote {
     fn hash<H: Hasher>(&self, state: &mut H) {
         self.note.hash(state);
+    }
+}
+
+impl OutputNote {
+    pub fn new(note: wmidi::Note) -> Self {
+        Self {
+            note
+        }
     }
 }

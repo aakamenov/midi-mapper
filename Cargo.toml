@@ -5,5 +5,6 @@ authors = ["Asparuh Kamenov <asparuhkamenov@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-eframe = "0.8.0"
+eframe = "0.10.0"
 wmidi = "4.0.2"
+slotmap = "1.0.2"
