@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-microui-femtovg = { git ="https://github.com/aakamenov/microui-rs", rev = "f682f23" }
+microui-femtovg = { git ="https://github.com/aakamenov/microui-rs", rev = "ce4427c" }
 rfd = "0.10.0"
 wmidi = "4.0.6"
 midly = "0.5.3"

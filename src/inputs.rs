@@ -22,7 +22,10 @@ pub enum Event {
 enum TracksState {
     Uninitialized,
     Initializing(mpsc::Receiver<MidiFile>),
-    Initialized(dropdown::State)
+    Initialized {
+        options: Vec<String>,
+        state: dropdown::State
+    }
 }
 
 struct InputState {
@@ -89,9 +92,10 @@ impl State {
                                 .map(|x|format!("Track {}", x.0 + 1))
                                 .collect();
                     
-                            next = Some(TracksState::Initialized(
-                                dropdown::State::new(options)
-                            ));
+                            next = Some(TracksState::Initialized {
+                                options,
+                                state: dropdown::State::default()
+                            });
 
                             self.tracks = init_tracks(&midi);
                             event = Some(Event::MidiLoaded(midi));
@@ -106,10 +110,10 @@ impl State {
                     self.tracks_state = state;
                 }
             },
-            TracksState::Initialized(dropdown) => {
+            TracksState::Initialized { options, state } => {
                 ctx.layout_row(&[-1], 0);
-                if ctx.dropdown(dropdown) {
-                    event = Some(Event::TrackChanged(dropdown.index));
+                if ctx.dropdown(state, options) {
+                    event = Some(Event::TrackChanged(state.index));
                 }
 
                 ctx.layout_row(&[-1], -1);
