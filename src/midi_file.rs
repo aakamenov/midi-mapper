@@ -54,7 +54,7 @@ impl MidiFile {
             }
         }
 
-        midi.save(file.as_path()).unwrap();
+        midi.save(file.as_path())?;
 
         Ok(())
     }
