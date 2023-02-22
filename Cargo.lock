@@ -718,12 +718,12 @@ dependencies = [
 [[package]]
 name = "microui"
 version = "0.1.0"
-source = "git+https://github.com/aakamenov/microui-rs?rev=ce4427c#ce4427ca69606957b5a3b3c7e334715fc67c35c9"
+source = "git+https://github.com/aakamenov/microui-rs?rev=ea69581#ea6958147d3083f1a7441255082423482f0154d8"
 
 [[package]]
 name = "microui-app"
 version = "0.1.0"
-source = "git+https://github.com/aakamenov/microui-rs?rev=ce4427c#ce4427ca69606957b5a3b3c7e334715fc67c35c9"
+source = "git+https://github.com/aakamenov/microui-rs?rev=ea69581#ea6958147d3083f1a7441255082423482f0154d8"
 dependencies = [
  "microui",
  "winit",
@@ -732,7 +732,7 @@ dependencies = [
 [[package]]
 name = "microui-femtovg"
 version = "0.1.0"
-source = "git+https://github.com/aakamenov/microui-rs?rev=ce4427c#ce4427ca69606957b5a3b3c7e334715fc67c35c9"
+source = "git+https://github.com/aakamenov/microui-rs?rev=ea69581#ea6958147d3083f1a7441255082423482f0154d8"
 dependencies = [
  "femtovg",
  "glutin",
@@ -747,6 +747,7 @@ version = "0.1.0"
 dependencies = [
  "microui-femtovg",
  "midly",
+ "nohash-hasher",
  "rfd",
  "wmidi",
 ]
@@ -840,6 +841,12 @@ dependencies = [
  "libc",
  "memoffset 0.6.5",
 ]
+
+[[package]]
+name = "nohash-hasher"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2bf50223579dc7cdcfb3bfcacf7069ff68243f8c363f62ffa99cf000a6b9c451"
 
 [[package]]
 name = "nom"
