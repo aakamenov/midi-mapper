@@ -90,9 +90,9 @@ impl State {
     }
 
     #[inline]
-    pub fn set_mapping(&mut self, selection: SelectedOutput, note: wmidi::Note) {
+    pub fn set_mapping(&mut self, selection: SelectedOutput, note: Option<wmidi::Note>) {
         let SelectedOutput { track, index, .. } = selection;
-        self.tracks[track][index].map_to = Some(note);
+        self.tracks[track][index].map_to = note;
     }
 
     pub fn draw<'a>(

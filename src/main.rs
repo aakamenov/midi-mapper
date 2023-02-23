@@ -58,7 +58,9 @@ impl App for MidiMapper {
                         inputs::Event::OutputSelected(selection) => {
                             if selection.output > 0 {
                                 let note = self.outputs.output(selection.output - 1);
-                                self.inputs.set_mapping(selection, note);
+                                self.inputs.set_mapping(selection, Some(note));
+                            } else {
+                                self.inputs.set_mapping(selection, None);
                             }
                         }
                         inputs::Event::MidiLoaded(midi) => {
